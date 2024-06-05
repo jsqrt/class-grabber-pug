@@ -1,0 +1,55 @@
+
+section.section.key_features.js-tabs-section
+	.section_in.key_features__in
+		h3.key_features__title Key Features
+		.key_features__nav
+			ul.key_features__nav_list(role="tablist")
+				each item, i in tabs.navigation
+					li.key_features__nav_item
+						a.key_features__nav_link(href="#"  data-tab-trigger=`key_features_tab_${i}` role="tab")= item.title
+		.key_features__content
+			each item, i in tabs.content
+				.key_features__tab(role="tabpanel" class=item.decor_mod data-tab=`key_features_tab_${i}`)
+					.key_features__tab_content
+						.key_features__tab_icon
+							+icon(item.icon)
+						h4.key_features__tab_title= item.title
+						.key_features__tab_descr
+							p= item.descr
+					.key_features__tab_picture_col
+						.key_features__tab_picture_col_in
+							+picture({
+								class: 'key_features__tab_picture',
+								img_class: 'key_features__tab_picture_img',
+								img: item.img,
+								alt: item.title
+							})
+							.key_features__tab_decor
+								if item.sub_icon
+									.key_features__tab_decor_icon_w
+										.key_features__tab_decor_icon
+											+icon(item.sub_icon)
+								.key_features__tab_decor_title
+									.key_features__tab_decor_text= item.sub_text
+									if item.sub_count
+										.key_features__tab_decor_count= item.sub_count
+									if item.sub_btn
+										.key_features__tab_decor_btn
+											if item.btn_icon
+												.key_features__tab_decor_btn_icon
+													+icon(item.btn_icon)
+											.key_features__tab_decor_btn_title!= item.sub_btn
+								if item.preloader
+									.key_features__tab_decor_preloader
+										img.key_features__tab_decor_preloader_in(src=item.preloader alt=' ')
+
+							if item.sub_list
+								ul.key_features__tab_decor_list
+									each title in item.sub_list
+										li.key_features__tab_decor_item
+											.key_features__tab_decor_item_icon
+												+icon('checkbox')
+											.key_features__tab_decor_item_title= title
+
+
+
